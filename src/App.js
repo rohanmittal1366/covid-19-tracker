@@ -9,11 +9,14 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import InfoBox from "./components/InfoBox/InfoBox";
 import Map from "./components/Map/Map";
+import Table from "./components/Table/Table";
+import { sortData } from "./util";
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
     const getCountryData = async () => {
@@ -24,6 +27,9 @@ function App() {
             name: country.country,
             value: country.countryInfo.iso2,
           }));
+          const sortedData = sortData(data);
+
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
@@ -103,7 +109,8 @@ function App() {
         {/* Graph */}
         <CardContent>
           <h3>Live Cases by Country</h3>
-
+          console.log(tableData)
+          <Table countries={tableData} />
           <h3>Worldwide new Cases</h3>
         </CardContent>
       </Card>
