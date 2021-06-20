@@ -32,15 +32,17 @@ export const sortData = (data) => {
 export const prettyPrintStat = (stat) =>
   stat ? `+${numeral(stat).format("0.0a")}` : "+0";
 
-export const showDataOnMap = (data, casesType = "cases") =>
+export const showDataOnMap = (data, casesTypes = "cases") =>
   data.map((country) => (
     <Circle
       center={[country.countryInfo.lat, country.countryInfo.long]}
-      color={casesTypeColors[casesType].hex}
-      fillColor={casesTypeColors[casesType].hex}
+      pathOptions={{
+        color: casesTypeColors[casesTypes].hex,
+        fillColor: casesTypeColors[casesTypes].hex,
+      }}
       fillOpacity={0.4}
       radius={
-        Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
+        Math.sqrt(country[casesTypes]) * casesTypeColors[casesTypes].multiplier
       }
     >
       <Popup>

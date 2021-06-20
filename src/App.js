@@ -22,7 +22,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   const [mapzoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
-  const [casesType, setCasesType] = useState("cases");
+  const [casesTypes, setCasesTypes] = useState("cases");
 
   useEffect(() => {
     const getCountryData = async () => {
@@ -98,16 +98,16 @@ function App() {
         <div className="app__stats">
           <InfoBox
             isRed
-            onClick={(e) => setCasesType("cases")}
-            active={casesType === "cases"}
+            onClick={(e) => setCasesTypes("cases")}
+            active={casesTypes === "cases"}
             title="Coronavirus Cases"
             className="infoBox__cases"
             total={prettyPrintStat(countryInfo.cases)}
             cases={prettyPrintStat(countryInfo.todayCases)}
           />
           <InfoBox
-            onClick={(e) => setCasesType("recovered")}
-            active={casesType === "recovered"}
+            onClick={(e) => setCasesTypes("recovered")}
+            active={casesTypes === "recovered"}
             className="infoBox__recovered"
             title="Recovered"
             total={prettyPrintStat(countryInfo.recovered)}
@@ -115,9 +115,9 @@ function App() {
           />
           <InfoBox
             isGrey
-            onClick={(e) => setCasesType("deaths")}
+            onClick={(e) => setCasesTypes("deaths")}
             title="Deaths"
-            active={casesType === "deaths"}
+            active={casesTypes === "deaths"}
             className="infoBox__deaths"
             total={prettyPrintStat(countryInfo.deaths)}
             cases={prettyPrintStat(countryInfo.todayDeaths)}
@@ -125,7 +125,7 @@ function App() {
         </div>
 
         <Map
-          casesType={casesType}
+          casesTypes={casesTypes}
           countries={mapCountries}
           center={mapCenter}
           zoom={mapzoom}
@@ -138,9 +138,9 @@ function App() {
 
             <Table countries={tableData} />
 
-            <h3 className="app__graphTitle">Worldwide new {casesType}</h3>
+            <h3 className="app__graphTitle">Worldwide new {casesTypes}</h3>
 
-            <LineGraph className="app__graph" casesType={casesType} />
+            <LineGraph className="app__graph" casesTypes={casesTypes} />
           </div>
         </CardContent>
       </Card>
