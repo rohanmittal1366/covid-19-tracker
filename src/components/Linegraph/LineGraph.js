@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
 import { numeral } from "numeral";
+import { Line } from "react-chartjs-2/dist";
 
 const options = {
   legend: {
     display: false,
+  },
+
+  labels: {
+    callbacks: {
+      label: function (tooltipItem, data) {
+        return numeral(tooltipItem.value).format("+0,0");
+      },
+    },
   },
   elements: {
     point: {
@@ -98,8 +106,13 @@ const LineGraph = ({ casesTypes, ...props }) => {
               {
                 backgroundColor: "rgba(204 , 16 , 52 , 0.5 )",
                 borderColor: "#CC1034",
-                fill: true,
+                fill: {
+                  above: "orange",
+                  below: "green",
+                  target: { value: 350 },
+                },
                 data: data,
+                label: "Covid Data",
               },
             ],
           }}
@@ -111,3 +124,13 @@ const LineGraph = ({ casesTypes, ...props }) => {
 };
 
 export default LineGraph;
+
+// Hey Friends! Just figured how you can resolve the problem with chart.js TypeError, whitch  says  cannot read property defaults of undefined! Follow the next lines:
+// 1.Kill the dev server
+// 2. npm uninstall react-chartjs-2 chart.js
+// 3.npm install --save react-chartjs-2 chart.js@version2.9.4
+
+// 4. npm start
+
+// This worked for me, I hope I can help for you guys too :)
+// Happy hacking lads 🤙
