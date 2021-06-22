@@ -18,9 +18,10 @@ const InfoBox = ({ title, cases, isRed, isGrey, active, total, ...props }) => {
 
         {/* Number of cases */}
         <h2
-          className={`infoBox__cases ${
-            !isRed && !isGrey && "infoBox__cases--green"
-          } ${isGrey && "infoBox__cases--grey"} `}
+          className={`infoBox__cases
+          ${isGrey && "infoBox__cases--grey"}
+           ${!isRed && !isGrey && "infoBox__cases--green"} 
+           `}
         >
           {cases}
         </h2>

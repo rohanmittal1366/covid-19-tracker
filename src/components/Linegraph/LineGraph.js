@@ -7,13 +7,6 @@ const options = {
     display: false,
   },
 
-  labels: {
-    callbacks: {
-      label: function (tooltipItem, data) {
-        return numeral(tooltipItem.value).format("+0,0");
-      },
-    },
-  },
   elements: {
     point: {
       radius: 0,
@@ -124,13 +117,3 @@ const LineGraph = ({ casesTypes, ...props }) => {
 };
 
 export default LineGraph;
-
-// Hey Friends! Just figured how you can resolve the problem with chart.js TypeError, whitch  says  cannot read property defaults of undefined! Follow the next lines:
-// 1.Kill the dev server
-// 2. npm uninstall react-chartjs-2 chart.js
-// 3.npm install --save react-chartjs-2 chart.js@version2.9.4
-
-// 4. npm start
-
-// This worked for me, I hope I can help for you guys too :)
-// Happy hacking lads 🤙

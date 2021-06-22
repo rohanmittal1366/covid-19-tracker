@@ -12,11 +12,11 @@
 }
 
 .infoBox--red {
-  border-color: red;
+  border-color: rgb(240, 46, 46);
 }
 
 .infoBox__cases--green {
-  color: lightgreen !important;
+  color: rgb(75, 238, 75) !important;
 }
 
 .infoBox--grey {
@@ -24,7 +24,7 @@
 }
 
 .infoBox__cases--grey {
-  color: grey;
+  color: rgb(104, 104, 104) !important;
 }
 
 .infoBox__cases {
